@@ -29,6 +29,46 @@ structured fault database
 
 
 
+
+## Full system domains and roadmap
+
+Hardware and communication are one layer in a broader AI vehicle engineering
+operating system. The architecture is defined across:
+
+```text
+Vehicle → hardware → protocols → BMW software → knowledge → diagnostics
+→ causal reasoning → digital twin → simulation → performance → calibration
+→ validation → safety → versioning → recovery → audit/security → AI orchestration
+```
+
+Major domain packages now include vehicle identity/configuration, ECU and DTC
+knowledge, wiring/parts/procedure knowledge, continuously updated vehicle state,
+causal hypotheses with evidence status, controlled experiments/falsification,
+calibration records, vehicle-state ledger entries, recovery plans, security
+principals, audit/reproducibility records, anomaly/temporal/fleet/vision/voice
+interfaces, and orchestration roadmap metadata.
+
+The implementation order is intentionally read-only first:
+
+```text
+V0   Hardware + protocol abstraction
+V1   Vehicle identification + ECU topology
+V2   Read-only diagnostics
+V3   BMW knowledge/wiring/test-plan graph
+V4   Diagnostic reasoning + falsification engine
+V5   Digital twin + calculations
+V6   Performance simulation
+V7   Calibration/version-control system
+V8   Factory baseline + recovery
+V9   Controlled coding/programming
+V10  Autonomous closed-loop engineering agent
+```
+
+V0 through V8 remain read-only or simulation-only. Controlled coding and ECU
+programming do not appear until V9, after identity, topology, diagnostics,
+knowledge, causal reasoning, simulation, calibration/version control, baseline,
+recovery, validation, and safety infrastructure exist.
+
 ## Mandatory Factory Baseline vault
 
 Factory-baseline preservation is a mandatory architectural component, not an
@@ -211,12 +251,21 @@ tendency, and heat rejection.
 bmw-diagnostic-agent/
 ├── agent/          # Future probabilistic reasoning layer
 ├── mcp/            # Future MCP server/tools
+├── architecture/   # System roadmap and domain map
+├── identity/       # Vehicle identity and configuration models
 ├── vehicle/        # Deterministic vehicle communication boundary
 ├── performance/    # Digital twin, calculations, tuning simulation
 ├── baseline/       # Immutable factory baseline vault and tune versions
 ├── bmw/            # BMW software ecosystem taxonomy and generations
 ├── hardware/       # Physical transports, interfaces, buses, measurement hardware
 ├── protocol/       # UDS/KWP/DoIP/ISO protocol engine boundaries
+├── calibration/    # Calibration records and change tracking
+├── recovery/       # Rollback and recovery plans
+├── audit/          # Audit and reproducibility records
+├── security/       # Authorization and principal models
+├── validation/     # Validation results
+├── experiment/     # Diagnostic experiments and falsification
+├── anomaly/ temporal/ fleet/ vision/ voice/
 ├── ista/           # Future ISTA bridge
 ├── knowledge/      # Future diagnostic knowledge sources
 ├── safety/         # Read-only permissions and safety policies
