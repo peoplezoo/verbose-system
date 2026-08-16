@@ -1,0 +1,1 @@
+"""Future wiring data adapters."""

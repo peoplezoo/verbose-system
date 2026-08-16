@@ -1,0 +1,13 @@
+# V0.1 defaults. Replace simulator with a hardware adapter when available.
+interface: simulated
+connection:
+  platform: windows-python
+  adapter: bmw-diagnostic-interface
+  mode: readonly
+performance:
+  mode: simulation-only
+  ecu_writes: disabled
+  constraints:
+    max_injector_duty_cycle: 0.90
+    max_charge_air_temperature_c: 65
+    max_oil_temperature_tendency_c: 125
